@@ -30,4 +30,8 @@ public interface Model {
     Object clone();
 
     Map<String, Object> getVendorExtensions();
+
+    Object getAdditionalProperties();
+
+    void setAdditionalProperties(Object additionalProperties);
 }

@@ -290,8 +290,9 @@ public class SpecFilter {
                 ((ArrayProperty) property).getItems() != null) {
             return getPropertyRef(((ArrayProperty) property).getItems());
         } else if (property instanceof MapProperty &&
-                ((MapProperty) property).getAdditionalProperties() != null) {
-            return getPropertyRef(((MapProperty) property).getAdditionalProperties());
+                ((MapProperty) property).getAdditionalProperties() != null &&
+                ((MapProperty) property).getAdditionalProperties() instanceof Property) {
+            return getPropertyRef((Property)((MapProperty) property).getAdditionalProperties());
         } else if (property instanceof RefProperty) {
             return ((RefProperty) property).getSimpleRef();
         }
