@@ -2,6 +2,7 @@ package io.swagger.jackson;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
 import io.swagger.converter.ModelConverterContextImpl;
 import io.swagger.models.Model;
@@ -49,10 +50,11 @@ public class ContainerTest extends SwaggerTestBase {
         assertNotNull(prop);
         assertEquals(prop.getType(), "object");
 
-        final Property items = ((MapProperty) prop).getAdditionalProperties();
+        final Object items = ((MapProperty) prop).getAdditionalProperties();
         assertNotNull(items);
-        assertEquals(items.getType(), "string");
-        assertEquals(items.getFormat(), "date-time");
+        assertTrue(items instanceof Property);
+        assertEquals(((Property) items).getType(), "string");
+        assertEquals(((Property) items).getFormat(), "date-time");
     }
 
     @Test

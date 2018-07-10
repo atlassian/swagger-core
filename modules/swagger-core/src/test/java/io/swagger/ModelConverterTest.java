@@ -207,7 +207,7 @@ public class ModelConverterTest {
                 Property items = ((ArrayProperty) property).getItems();
                 assertNotNull(items);
                 assertEquals(items.getClass(), MapProperty.class);
-                Property stringProperty = ((MapProperty) items).getAdditionalProperties();
+                Object stringProperty = ((MapProperty) items).getAdditionalProperties();
                 assertNotNull(stringProperty);
                 assertEquals(stringProperty.getClass(), StringProperty.class);
             } else if ("complexLeft".equals(name)) {
@@ -215,7 +215,7 @@ public class ModelConverterTest {
                 Property items = ((ArrayProperty) property).getItems();
                 assertNotNull(items);
                 assertEquals(items.getClass(), MapProperty.class);
-                Property additionalProperty = ((MapProperty) items).getAdditionalProperties();
+                Object additionalProperty = ((MapProperty) items).getAdditionalProperties();
                 assertNotNull(additionalProperty);
                 assertEquals(additionalProperty.getClass(), RefProperty.class);
                 assertEquals(((RefProperty) additionalProperty).getSimpleRef(), "ComplexLeft");

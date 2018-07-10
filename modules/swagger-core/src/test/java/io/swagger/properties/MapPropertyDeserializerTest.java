@@ -92,6 +92,7 @@ public class MapPropertyDeserializerTest {
                "              name:\n" +
                "                type: string\n" +
                "            required: [id, name]\n" +
+               "            additionalProperties: false\n" +
                "            example:\n" +
                "              id: 42\n" +
                "              name: Arthur Dent\n";

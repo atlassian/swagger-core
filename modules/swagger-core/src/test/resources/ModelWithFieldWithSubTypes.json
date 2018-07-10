@@ -16,6 +16,7 @@
                 "description": "An arbitrary field"
             }
         },
+        "additionalProperties":false,
         "description": "I am an Abstract Base Model with Sub-Types"
     },
     "ModelWithFieldWithSubTypes": {
@@ -26,9 +27,11 @@
                 "$ref": "#/definitions/AbstractBaseModelWithSubTypes"
             }
         },
+        "additionalProperties":false,
         "description": "Class that has a field that is the AbstractBaseModelWithSubTypes"
     },
     "Thing1": {
+        "additionalProperties":false,
         "allOf": [
             {
                 "$ref": "#/definitions/AbstractBaseModelWithSubTypes"
@@ -46,11 +49,13 @@
                         "description": "Thing1 has an additional field"
                     }
                 },
+                "additionalProperties":false,
                 "description": "Shake hands with Thing1"
             }
         ]
     },
     "Thing2": {
+        "additionalProperties":false,
         "allOf": [
             {
                 "$ref": "#/definitions/AbstractBaseModelWithSubTypes"
@@ -67,6 +72,7 @@
                         "description": "Thing2 has an additional field"
                     }
                 },
+                "additionalProperties":false,
                 "description": "and Thing2"
             }
         ]

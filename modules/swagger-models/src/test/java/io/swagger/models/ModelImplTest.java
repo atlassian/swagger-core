@@ -74,7 +74,7 @@ public class ModelImplTest extends PowerMockTestCase {
         assertNull(instance.getDiscriminator(), "New instance must have null discriminator");
         assertNull(instance.getDescription(), "New instance must have null description");
         assertFalse(instance.isSimple(), "New instance must not be simple");
-        assertNull(instance.getAdditionalProperties(), "New instance must have null additionalProperties");
+        assertFalse((Boolean) instance.getAdditionalProperties(), "New instance must have additionalProperties set to false");
         assertNull(instance.getExample(), "New instance must have null example");
         assertNull(instance.getDefaultValue(), "New instance must have null default value");
         assertNull(instance.getXml(), "New instance must have null Xml");
