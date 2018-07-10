@@ -27,7 +27,6 @@ public class ModelImpl extends AbstractModel {
     private boolean isSimple = false;
     private String description;
     private Object example;
-    private Object additionalProperties;
     private String discriminator;
     @JsonProperty("default")
     private String defaultValue;
@@ -103,11 +102,6 @@ public class ModelImpl extends AbstractModel {
         return this;
     }
 
-    public ModelImpl additionalProperties(Object additionalProperties) {
-        this.setAdditionalProperties(additionalProperties);
-        return this;
-    }
-
     public ModelImpl required(String name) {
         this.addRequired(name);
         return this;
@@ -160,15 +154,6 @@ public class ModelImpl extends AbstractModel {
 
     public void setSimple(boolean isSimple) {
         this.isSimple = isSimple;
-    }
-
-    public Object getAdditionalProperties() {
-        return (null == additionalProperties ? false: additionalProperties);
-    }
-
-    public void setAdditionalProperties(Object additionalProperties) {
-        type(OBJECT);
-        this.additionalProperties = additionalProperties;
     }
 
     public Boolean getAllowEmptyValue() {
@@ -368,9 +353,6 @@ public class ModelImpl extends AbstractModel {
         if (example != null ? !example.equals(model.example) : model.example != null) {
             return false;
         }
-        if (additionalProperties != null ? !additionalProperties.equals(model.additionalProperties) : model.additionalProperties != null) {
-            return false;
-        }
         if (discriminator != null ? !discriminator.equals(model.discriminator) : model.discriminator != null) {
             return false;
         }
@@ -400,7 +382,6 @@ public class ModelImpl extends AbstractModel {
         result = 31 * result + (isSimple ? 1 : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (example != null ? example.hashCode() : 0);
-        result = 31 * result + (additionalProperties != null ? additionalProperties.hashCode() : 0);
         result = 31 * result + (discriminator != null ? discriminator.hashCode() : 0);
         result = 31 * result + (defaultValue != null ? defaultValue.hashCode() : 0);
         result = 31 * result + (_enum != null ? _enum.hashCode() : 0);
@@ -424,7 +405,6 @@ public class ModelImpl extends AbstractModel {
         cloned.isSimple = this.isSimple;
         cloned.description = this.description;
         cloned.example = this.example;
-        cloned.additionalProperties = this.additionalProperties;
         cloned.discriminator = this.discriminator;
         cloned.defaultValue = this.defaultValue;
         cloned.minimum = this.minimum;
