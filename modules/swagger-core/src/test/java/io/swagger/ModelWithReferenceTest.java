@@ -23,7 +23,8 @@ public class ModelWithReferenceTest {
                 "         \"description\":{\n" +
                 "            \"$ref\":\"http://swagger.io/schemas.json#/Models/Description\"\n" +
                 "         }\n" +
-                "      }\n" +
+                "      },\n" +
+                "      \"additionalProperties\":false\n" +
                 "   }\n" +
                 "}";
         SerializationMatchers.assertEqualsToJson(schemas, json);
@@ -42,7 +43,8 @@ public class ModelWithReferenceTest {
                 "         \"anotherModel\":{\n" +
                 "            \"$ref\":\"http://swagger.io/schemas.json#/Models/AnotherModel\"\n" +
                 "         }\n" +
-                "      }\n" +
+                "      },\n" +
+                "      \"additionalProperties\":false\n" +
                 "   }\n" +
                 "}";
         SerializationMatchers.assertEqualsToJson(schemas, json);

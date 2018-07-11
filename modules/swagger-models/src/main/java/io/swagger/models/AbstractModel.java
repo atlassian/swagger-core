@@ -22,7 +22,7 @@ public abstract class AbstractModel implements Model {
     private Integer minLength;
     private Integer maxLength;
     private String pattern;
-    private Object additionalProperties;
+    public Object additionalProperties;
 
     @Override
     public ExternalDocs getExternalDocs() {

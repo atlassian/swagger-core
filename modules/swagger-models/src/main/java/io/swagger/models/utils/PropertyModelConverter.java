@@ -22,8 +22,7 @@ public class PropertyModelConverter {
 
         if(model instanceof ModelImpl) {
             ModelImpl m = (ModelImpl) model;
-            if (m.getAdditionalProperties() != null &&
-                    m.getAdditionalProperties() instanceof  Property){
+            if (m.additionalProperties != null){
                 MapProperty mapProperty = new MapProperty();
                 mapProperty.setType(m.getType());
                 mapProperty.setAllowEmptyValue(m.getAllowEmptyValue());

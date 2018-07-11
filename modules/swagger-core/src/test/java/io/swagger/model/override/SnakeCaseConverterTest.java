@@ -40,7 +40,8 @@ public class SnakeCaseConverterTest {
                 "         \"foo\":{" +
                 "            \"type\":\"string\"" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }," +
                 "   \"snake_case_model\":{" +
                 "      \"type\":\"object\"," +
@@ -54,7 +55,8 @@ public class SnakeCaseConverterTest {
                 "      }," +
                 "      \"xml\":{" +
                 "         \"name\":\"snakeCaseModel\"" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(models, json);

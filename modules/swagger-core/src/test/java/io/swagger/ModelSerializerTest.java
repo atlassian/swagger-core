@@ -69,7 +69,8 @@ public class ModelSerializerTest {
                 "         \"type\":\"integer\",\n" +
                 "         \"format\":\"int32\"\n" +
                 "      }\n" +
-                "   }\n" +
+                "   },\n" +
+                "   \"additionalProperties\":false}\n" +
                 "}";
 
         SerializationMatchers.assertEqualsToJson(pet, json);
@@ -102,7 +103,8 @@ public class ModelSerializerTest {
                 "         \"type\":\"string\",\n" +
                 "         \"format\":\"binary\"\n" +
                 "      }\n" +
-                "   }\n" +
+                "   },\n" +
+                "   \"additionalProperties\":false}\n" +
                 "}";
 
         final Model p = m.readValue(json, Model.class);
@@ -152,7 +154,8 @@ public class ModelSerializerTest {
                 "            \"format\":\"int32\",\n" +
                 "            \"readOnly\":true\n" +
                 "         }\n" +
-                "      }\n" +
+                "      },\n" +
+                "      \"additionalProperties\":false}\n" +
                 "   }\n" +
                 "}";
         SerializationMatchers.assertEqualsToJson(schemas, json);
@@ -172,7 +175,8 @@ public class ModelSerializerTest {
                 "               \"type\":\"string\"\n" +
                 "            }\n" +
                 "         }\n" +
-                "      }\n" +
+                "      },\n" +
+                "      \"additionalProperties\":false}\n" +
                 "   }\n" +
                 "}";
         SerializationMatchers.assertEqualsToJson(schemas, json);

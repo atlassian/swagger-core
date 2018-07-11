@@ -34,7 +34,8 @@ public class NumericFormatTest {
             "        \"format\" : \"int32\"," + NEWLINE  +
             "        \"minimum\" : 3" + NEWLINE  +
             "      }" + NEWLINE  +
-            "    }" + NEWLINE  +
+            "    }," + NEWLINE  +
+            "    \"additionalProperties\" : false" + NEWLINE +
             "  }" + NEWLINE  +
             "}");
     }
@@ -56,7 +57,8 @@ public class NumericFormatTest {
             "        \"minimum\" : 3.3," + NEWLINE  +
             "        \"exclusiveMinimum\" : false" + NEWLINE  +
             "      }" + NEWLINE  +
-            "    }" + NEWLINE  +
+            "    }," + NEWLINE  +
+            "    \"additionalProperties\" : false" + NEWLINE +
             "  }" + NEWLINE  +
             "}");
     }
@@ -80,7 +82,8 @@ public class NumericFormatTest {
             "        \"exclusiveMinimum\" : false," + NEWLINE  +
             "        \"exclusiveMaximum\" : false" + NEWLINE  +
             "      }" + NEWLINE  +
-            "    }" + NEWLINE  +
+            "    }," + NEWLINE  +
+            "    \"additionalProperties\" : false" + NEWLINE +
             "  }" + NEWLINE  +
             "}");
 

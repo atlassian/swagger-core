@@ -37,7 +37,7 @@ public class ModelImplTest extends PowerMockTestCase {
     @Test
     public void testClone() {
         // given
-        propertiesAndValues = new Object[]{"additionalProperties", new ArrayProperty(), "description", "description",
+        propertiesAndValues = new Object[]{"description", "description",
                 "discriminator", "discriminator", "example", new Object(), "isSimple", true, "name", "name",
                 "properties", new HashMap<String, Property>(), "required", new ArrayList<String>(), "type", "type",
                 "xml", new Xml(), "defaultValue", "defaultValue",};
