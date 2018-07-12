@@ -25,7 +25,62 @@
                         "description":"Test",
                         "required":true,
                         "schema":{
-                            "$ref":"#/definitions/ModelWithJsonIdentity"
+                            "type": "object",
+                            "properties": {
+                                "PropertyGeneratorAsId": {
+                                    "type": "string"
+                                },
+                                "PropertyGeneratorAsProperty": {
+                                    "$ref": "#/definitions/SourceDefinition1"
+                                },
+                                "ChangedPropertyName": {
+                                    "type": "string"
+                                },
+                                "SourceWithoutPropertyAsId": {
+                                    "type": "string"
+                                },
+                                "SourceWithoutPropertyAsProperty": {
+                                    "$ref": "#/definitions/SourceDefinition3"
+                                },
+                                "IntSequenceGeneratorAsId": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "IntSequenceGeneratorAsProperty": {
+                                    "$ref": "#/definitions/SourceDefinition4"
+                                },
+                                "IntSequenceWithoutPropertyAsId": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "IntSequenceWithoutPropertyAsProperty": {
+                                    "$ref": "#/definitions/SourceDefinition5"
+                                },
+                                "UUIDGeneratorAsId": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "UUIDGeneratorAsProperty": {
+                                    "$ref": "#/definitions/SourceDefinition6"
+                                },
+                                "UUIDGeneratorWithoutPropertyAsId": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "UUIDGeneratorWithoutPropertyAsProperty": {
+                                    "$ref": "#/definitions/SourceDefinition7"
+                                },
+                                "GeneratorsNone": {
+                                    "$ref": "#/definitions/SourceDefinition8"
+                                },
+                                "CustomGenerator": {
+                                    "type": "string"
+                                },
+                                "WithoutJsonIdentityReference": {
+                                    "$ref": "#/definitions/SourceDefinition10"
+                                }
+                            },
+                            "additionalProperties": true
                         }
                     }
                 ],
@@ -48,7 +103,8 @@
                     "type":"integer",
                     "format":"int32"
                 }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition5":{
             "type":"object",
@@ -60,64 +116,8 @@
                     "type":"integer",
                     "format":"int32"
                 }
-            }
-        },
-        "ModelWithJsonIdentity":{
-            "type":"object",
-            "properties":{
-                "PropertyGeneratorAsId":{
-                    "type":"string"
-                },
-                "PropertyGeneratorAsProperty":{
-                    "$ref":"#/definitions/SourceDefinition1"
-                },
-                "ChangedPropertyName":{
-                    "type":"string"
-                },
-                "SourceWithoutPropertyAsId":{
-                    "type":"string"
-                },
-                "SourceWithoutPropertyAsProperty":{
-                    "$ref":"#/definitions/SourceDefinition3"
-                },
-                "IntSequenceGeneratorAsId":{
-                    "type":"integer",
-                    "format":"int32"
-                },
-                "IntSequenceGeneratorAsProperty":{
-                    "$ref":"#/definitions/SourceDefinition4"
-                },
-                "IntSequenceWithoutPropertyAsId":{
-                    "type":"integer",
-                    "format":"int32"
-                },
-                "IntSequenceWithoutPropertyAsProperty":{
-                    "$ref":"#/definitions/SourceDefinition5"
-                },
-                "UUIDGeneratorAsId":{
-                    "type":"string",
-                    "format":"uuid"
-                },
-                "UUIDGeneratorAsProperty":{
-                    "$ref":"#/definitions/SourceDefinition6"
-                },
-                "UUIDGeneratorWithoutPropertyAsId":{
-                    "type":"string",
-                    "format":"uuid"
-                },
-                "UUIDGeneratorWithoutPropertyAsProperty":{
-                    "$ref":"#/definitions/SourceDefinition7"
-                },
-                "GeneratorsNone":{
-                    "$ref":"#/definitions/SourceDefinition8"
-                },
-                "CustomGenerator":{
-                    "type":"string"
-                },
-                "WithoutJsonIdentityReference":{
-                    "$ref":"#/definitions/SourceDefinition10"
-                }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition3":{
             "type":"object",
@@ -131,7 +131,8 @@
                 "@id":{
                     "type":"string"
                 }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition10":{
             "type":"object",
@@ -142,7 +143,8 @@
                 "name":{
                     "type":"string"
                 }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition1":{
             "type":"object",
@@ -153,7 +155,8 @@
                 "name":{
                     "type":"string"
                 }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition8":{
             "type":"object",
@@ -164,7 +167,8 @@
                 "driverId":{
                     "type":"string"
                 }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition6":{
             "type":"object",
@@ -176,7 +180,8 @@
                     "type":"string",
                     "format":"uuid"
                 }
-            }
+            },
+            "additionalProperties":true
         },
         "SourceDefinition7":{
             "type":"object",
@@ -188,7 +193,8 @@
                     "type":"string",
                     "format":"uuid"
                 }
-            }
+            },
+            "additionalProperties":true
         }
     }
 }

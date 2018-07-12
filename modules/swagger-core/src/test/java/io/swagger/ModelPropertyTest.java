@@ -78,7 +78,8 @@ public class ModelPropertyTest {
                 "         \"name\":{" +
                 "            \"type\":\"string\"" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }," +
                 "   \"ModelWithModelPropertyOverrides\":{" +
                 "      \"type\":\"object\"," +
@@ -89,7 +90,8 @@ public class ModelPropertyTest {
                 "               \"$ref\":\"#/definitions/Children\"" +
                 "            }" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(models, json);

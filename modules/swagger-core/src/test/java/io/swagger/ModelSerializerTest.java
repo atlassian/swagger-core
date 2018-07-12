@@ -115,7 +115,7 @@ public class ModelSerializerTest {
     public void serializeArrayModel() throws IOException {
         final ArrayModel model = new ArrayModel();
         model.setItems(new RefProperty("Pet"));
-        assertEquals(m.writeValueAsString(model), "{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Pet\"}}");
+        assertEquals(m.writeValueAsString(model), "{\"additionalProperties\":false,\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Pet\"}}");
     }
 
     @Test(description = "it should serialize an array model with xml")
@@ -123,12 +123,12 @@ public class ModelSerializerTest {
         final ArrayModel model = new ArrayModel();
         model.setItems(new RefProperty("Pet"));
         model.setXml(new Xml().wrapped(true).name("payments"));
-        assertEquals(m.writeValueAsString(model), "{\"xml\":{\"name\":\"payments\",\"wrapped\":true},\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Pet\"}}");
+        assertEquals(m.writeValueAsString(model), "{\"xml\":{\"name\":\"payments\",\"wrapped\":true},\"additionalProperties\":false,\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Pet\"}}");
     }
 
     @Test(description = "it should deserialize an array model")
     public void deserializeArrayModel() throws IOException {
-        final String json = "{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Pet\"}}";
+        final String json = "{\"additionalProperties\":false,\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Pet\"}}";
         final Model p = m.readValue(json, Model.class);
         assertTrue(p instanceof ArrayModel);
         assertEquals(m.writeValueAsString(p), json);
@@ -403,7 +403,7 @@ public class ModelSerializerTest {
         modelImpl.setMinLength(1);
         modelImpl.setMaxLength(10);
         modelImpl.setPattern("Pattern");
-        assertEquals(m.writeValueAsString(modelImpl), "{\"minimum\":1,\"maximum\":100,\"multipleOf\":10,\"exclusiveMinimum\":true,\"exclusiveMaximum\":true,\"minLength\":1,\"maxLength\":10,\"pattern\":\"Pattern\",\"uniqueItems\":true}");
+        assertEquals(m.writeValueAsString(modelImpl), "{\"minimum\":1,\"maximum\":100,\"multipleOf\":10,\"exclusiveMinimum\":true,\"exclusiveMaximum\":true,\"minLength\":1,\"maxLength\":10,\"pattern\":\"Pattern\",\"additionalProperties\":false,\"uniqueItems\":true}");
     }
 
     @Test(description = "It should serialize an ArrayModel with new values added in 673")
@@ -418,7 +418,7 @@ public class ModelSerializerTest {
         arrayModel.setMinLength(1);
         arrayModel.setMaxLength(10);
         arrayModel.setPattern("Pattern");
-        assertEquals(m.writeValueAsString(arrayModel), "{\"minimum\":1,\"maximum\":100,\"multipleOf\":10,\"exclusiveMinimum\":true,\"exclusiveMaximum\":true,\"minLength\":1,\"maxLength\":10,\"pattern\":\"Pattern\",\"type\":\"array\",\"uniqueItems\":true}");
+        assertEquals(m.writeValueAsString(arrayModel), "{\"minimum\":1,\"maximum\":100,\"multipleOf\":10,\"exclusiveMinimum\":true,\"exclusiveMaximum\":true,\"minLength\":1,\"maxLength\":10,\"pattern\":\"Pattern\",\"additionalProperties\":false,\"type\":\"array\",\"uniqueItems\":true}");
     }
 
     @Test(description = "It should serialize a ComposedModel with new values added in 673")
@@ -432,7 +432,7 @@ public class ModelSerializerTest {
         composedModel.setMinLength(1);
         composedModel.setMaxLength(10);
         composedModel.setPattern("Pattern");
-        assertEquals(m.writeValueAsString(composedModel), "{\"minimum\":1,\"maximum\":100,\"multipleOf\":10,\"exclusiveMinimum\":true,\"exclusiveMaximum\":true,\"minLength\":1,\"maxLength\":10,\"pattern\":\"Pattern\",\"allOf\":[]}");
+        assertEquals(m.writeValueAsString(composedModel), "{\"minimum\":1,\"maximum\":100,\"multipleOf\":10,\"exclusiveMinimum\":true,\"exclusiveMaximum\":true,\"minLength\":1,\"maxLength\":10,\"pattern\":\"Pattern\",\"additionalProperties\":false,\"allOf\":[]}");
     }
 
     @Test(description = "Deserialize New Boolean Values: SwaggerConverter drops some validation properties of body parameters")

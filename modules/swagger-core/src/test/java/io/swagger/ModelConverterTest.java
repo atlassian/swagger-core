@@ -187,7 +187,7 @@ public class ModelConverterTest {
         assertEquals(asMap.size(), 4);
         for (String item : Arrays.asList("MapOfString", "MapOfComplexLeft")) {
             ModelImpl model = (ModelImpl) asMap.get(item);
-            assertEquals(model.getType(), "object");
+            assertNull(model.getType());
             assertNull(model.getProperties());
             assertNotNull(model.getAdditionalProperties());
         }
@@ -367,7 +367,8 @@ public class ModelConverterTest {
                 "         \"format\":\"double\"," +
                 "         \"position\":5" +
                 "      }" +
-                "   }" +
+                "   }," +
+                "   \"additionalProperties\":false" +
                 "}";
         SerializationMatchers.assertEqualsToJson(model, json);
     }

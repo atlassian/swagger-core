@@ -4,12 +4,7 @@ import com.google.common.base.Functions;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 import io.swagger.jaxrs.Reader;
-import io.swagger.models.ArrayModel;
-import io.swagger.models.Model;
-import io.swagger.models.Operation;
-import io.swagger.models.RefModel;
-import io.swagger.models.Swagger;
-import io.swagger.models.TestEnum;
+import io.swagger.models.*;
 import io.swagger.models.parameters.BodyParameter;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.ArrayProperty;
@@ -62,7 +57,7 @@ public class GenericsTest {
     }
 
     private void testGenericType(Operation op, String type) {
-        assertEquals(((RefModel) getBodyParameter(op, 0).getSchema()).getSimpleRef(), type);
+        assertEquals(((ModelImpl) getBodyParameter(op, 0).getSchema()).getName(), type);
     }
 
     private BodyParameter getBodyParameter(Operation op, int index) {
@@ -79,6 +74,11 @@ public class GenericsTest {
 
     private Property getProperty(String type, String name) {
         return (swagger.getDefinitions().get(type)).getProperties().get(name);
+    }
+
+    private Property getPropertyFromBodyParam(Operation operation, String name) {
+        return ((BodyParameter) operation.getParameters().get(0))
+                .getSchema().getProperties().get(name);
     }
 
     @Test(description = "check collections of integers")
@@ -170,8 +170,8 @@ public class GenericsTest {
 
     @Test(description = "check parameters of generic types")
     public void checkParametersOfGenericTypes() {
-        Set<String> genericTypes = new HashSet(Arrays.asList("GenericTypeString", "GenericTypeUUID", "GenericTypeGenericTypeString",
-                "RenamedGenericTypeString", "RenamedGenericTypeRenamedGenericTypeString"));
+        Set<String> genericTypes = new HashSet(Arrays.asList("GenericTypeString",
+                "RenamedGenericTypeString"));
         assertTrue(swagger.getDefinitions().keySet().containsAll(genericTypes));
 
         Operation opString = getOperation("testGenericType");
@@ -182,20 +182,20 @@ public class GenericsTest {
 
         Operation opUUID = getOperation("testStringBasedGenericType");
         testGenericType(opUUID, "GenericTypeUUID");
-        Property uuidValue = getProperty("GenericTypeUUID", "value");
+        Property uuidValue = getPropertyFromBodyParam(opUUID, "value");
         assertNotEquals(uuidValue, null);
         assertEquals(uuidValue.getClass().getName(), UUIDProperty.class.getName());
 
         Operation opComplex = getOperation("testComplexGenericType");
         testGenericType(opComplex, "GenericTypeGenericTypeString");
-        Property complexValue = getProperty("GenericTypeGenericTypeString", "value");
+        Property complexValue = getPropertyFromBodyParam(opComplex, "value");
         assertNotEquals(complexValue, null);
         assertEquals(complexValue.getClass().getName(), RefProperty.class.getName());
         assertEquals(((RefProperty) complexValue).getSimpleRef(), "GenericTypeString");
 
         Operation opRenamed = getOperation("testRenamedGenericType");
         testGenericType(opRenamed, "RenamedGenericTypeRenamedGenericTypeString");
-        Property renamedComplexValue = getProperty("RenamedGenericTypeRenamedGenericTypeString", "value");
+        Property renamedComplexValue = getPropertyFromBodyParam(opRenamed, "value");
         assertNotEquals(renamedComplexValue, null);
         assertTrue(renamedComplexValue instanceof RefProperty);
         assertEquals(((RefProperty) renamedComplexValue).getSimpleRef(), "RenamedGenericTypeString");
@@ -221,7 +221,9 @@ public class GenericsTest {
     public void scanModelWithGenericType() {
         final Swagger swagger = new Reader(new Swagger()).read(UserApiRoute.class);
         assertNotNull(swagger);
-        final Model userEntity = swagger.getDefinitions().get("UserEntity");
+        final Model userEntity = ((BodyParameter)swagger.getPaths().get("/api/users")
+                .getPost().getParameters().get(0)).getSchema();
+
         assertNotNull(userEntity);
         final Map<String, Property> properties = userEntity.getProperties();
         assertEquals(properties.size(), 2);

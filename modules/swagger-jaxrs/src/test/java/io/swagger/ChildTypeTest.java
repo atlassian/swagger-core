@@ -1,10 +1,7 @@
 package io.swagger;
 
 import io.swagger.jaxrs.Reader;
-import io.swagger.models.Model;
-import io.swagger.models.Operation;
-import io.swagger.models.RefModel;
-import io.swagger.models.Swagger;
+import io.swagger.models.*;
 import io.swagger.models.parameters.BodyParameter;
 import io.swagger.models.properties.Property;
 import io.swagger.models.properties.RefProperty;
@@ -44,8 +41,8 @@ public class ChildTypeTest {
         Operation op = swagger.getPath("/childType/testChildTypeParameter").getPost();
         BodyParameter parameter = getBodyParameter(op, 0);
         Model schema = parameter.getSchema();
-        assertEquals(schema.getClass().getName(), RefModel.class.getName());
-        assertEquals(((RefModel) schema).getSimpleRef(), "Sub1Bean");
+        assertEquals(schema.getClass().getName(), ComposedModel.class.getName());
+        assertEquals(((ComposedModel) schema).getChild().getDescription(), "Sub1Bean");
     }
 
 }

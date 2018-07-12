@@ -262,11 +262,20 @@ public class ParameterProcessor {
                 }
                 if (property instanceof RefProperty){
                     for (Map.Entry<String, Model> entry : ModelConverters.getInstance().readAll(type).entrySet()) {
-                        entry.getValue().setAdditionalProperties(true);
-                        bp.schema(entry.getValue());
+                        if (entry.getKey().equals(((RefProperty) property).getSimpleRef())) {
+                            entry.getValue().setAdditionalProperties(true);
+                            bp.schema(entry.getValue());
+                        } else {
+                            entry.getValue().setAdditionalProperties(true);
+                            swagger.addDefinition(entry.getKey(), entry.getValue());
+                        }
                     }
                 } else {
                     bp.setSchema(PropertyBuilder.toModel(PropertyBuilder.merge(property, args)));
+                    for (Map.Entry<String, Model> entry : ModelConverters.getInstance().readAll(type).entrySet()) {
+                        entry.getValue().setAdditionalProperties(true);
+                        swagger.addDefinition(entry.getKey(), entry.getValue());
+                    }
                 }
             }
             parameter = bp;
