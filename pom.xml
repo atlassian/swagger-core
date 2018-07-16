@@ -1,17 +1,17 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.swagger</groupId>
     <artifactId>swagger-project</artifactId>
     <packaging>pom</packaging>
     <name>swagger-project</name>
-    <version>1.5.21-atlassian-1-SNAPSHOT</version>
+    <version>1.5.21-atlassian-1</version>
     <url>https://github.com/atlassian/swagger-core</url>
     <scm>
         <connection>scm:git:git@github.com:atlassian/swagger-core.git</connection>
         <developerConnection>scm:git:git@github.com:atlassian/swagger-core.git</developerConnection>
         <url>https://github.com/atlassian/swagger-core</url>
-    </scm>
+      <tag>swagger-project-1.5.21-atlassian-1</tag>
+  </scm>
     <prerequisites>
         <maven>2.2.0</maven>
     </prerequisites>
@@ -84,7 +84,7 @@
                         </goals>
                         <configuration>
                             <rules>
-                                <DependencyConvergence/>
+                                <DependencyConvergence />
                             </rules>
                         </configuration>
                     </execution>
@@ -356,7 +356,7 @@
                         <link>http://java.sun.com/javaee/5/docs/api</link>
                         <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
                     </links>
-                    <excludePackageNames/>
+                    <excludePackageNames />
                 </configuration>
             </plugin>
             <plugin>
