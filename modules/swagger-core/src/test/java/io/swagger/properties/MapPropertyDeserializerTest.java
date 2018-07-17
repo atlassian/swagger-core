@@ -56,7 +56,7 @@ public class MapPropertyDeserializerTest {
       assertTrue(responseSchema instanceof ModelImpl);
 
       ModelImpl modelImpl = (ModelImpl) responseSchema;
-      assertTrue(modelImpl.getAdditionalProperties() instanceof IntegerProperty);
+      assertNotNull(modelImpl.getAdditionalProperties());
   }
 
   @Test(description = "vendor extensions should be included with object type")
@@ -92,6 +92,7 @@ public class MapPropertyDeserializerTest {
                "              name:\n" +
                "                type: string\n" +
                "            required: [id, name]\n" +
+               "            additionalProperties: false\n" +
                "            example:\n" +
                "              id: 42\n" +
                "              name: Arthur Dent\n";

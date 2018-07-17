@@ -26,7 +26,8 @@ public class ModelPropertyOverrideTest {
                 "        \"format\" : \"date-time\"," +
                 "        \"description\" : \"instead of modeling this class in the documentation, we will model a string\"" +
                 "      }" +
-                "    }" +
+                "    }," +
+                "    \"additionalProperties\":false" +
                 "  }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(model, expected);

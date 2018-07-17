@@ -113,8 +113,8 @@ public class JsonDeserializationTest {
         final Property result = m.readValue(json, Property.class);
         assertTrue(result instanceof MapProperty);
 
-        final Property additionalProperties = ((MapProperty) result).getAdditionalProperties();
+        final Object additionalProperties = ((MapProperty) result).getAdditionalProperties();
         assertTrue(additionalProperties instanceof UntypedProperty);
-        assertEquals(additionalProperties.getDescription(), "map value");
+        assertEquals(((UntypedProperty) additionalProperties).getDescription(), "map value");
     }
 }

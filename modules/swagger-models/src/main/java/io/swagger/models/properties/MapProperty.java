@@ -3,7 +3,7 @@ package io.swagger.models.properties;
 import io.swagger.models.Xml;
 
 public class MapProperty extends AbstractProperty implements Property {
-    Property property;
+    Object property;
     private Integer minProperties;
     private Integer maxProperties;
 
@@ -48,11 +48,11 @@ public class MapProperty extends AbstractProperty implements Property {
         return this;
     }
 
-    public Property getAdditionalProperties() {
-        return property;
+    public Object getAdditionalProperties() {
+        return (null == property ? false: property);
     }
 
-    public void setAdditionalProperties(Property property) {
+    public void setAdditionalProperties(Object property) {
         this.property = property;
     }
 

@@ -1,9 +1,12 @@
 {
     "AbstractBaseModelWithoutFields": {
         "type": "object",
+        "additionalProperties":false,
         "description": "I am an Abstract Base Model without any declared fields and with Sub-Types"
+
     },
     "Thing3": {
+        "additionalProperties":false,
         "allOf": [
             {
                 "$ref": "#/definitions/AbstractBaseModelWithoutFields"
@@ -21,6 +24,7 @@
                         "description": "Additional field a"
                     }
                 },
+                "additionalProperties":false,
                 "description": "Thing3"
             }
         ]

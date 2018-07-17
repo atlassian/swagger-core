@@ -30,7 +30,8 @@ public class CovariantGetterTest {
                 "            \"format\":\"int32\"," +
                 "            \"position\":2" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(models, json);

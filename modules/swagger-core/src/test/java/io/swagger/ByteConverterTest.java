@@ -33,7 +33,8 @@ public class ByteConverterTest {
                 "               \"format\":\"byte\"" +
                 "            }" +
                 "         }" +
-                "      }" +
+                "      }, " +
+                "     \"additionalProperties\": false" +
                 "   }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(models, json);
@@ -50,7 +51,8 @@ public class ByteConverterTest {
                 "      \"type\" : \"string\"," + NEWLINE +
                 "      \"format\" : \"byte\"" + NEWLINE +
                 "    }" + NEWLINE +
-                "  }" + NEWLINE +
+                "  }," + NEWLINE +
+                "  \"additionalProperties\" : false" + NEWLINE +
                 "}");
     }
 
@@ -83,7 +85,8 @@ public class ByteConverterTest {
                 "        \"format\" : \"binary\"" + NEWLINE +
                 "      }" + NEWLINE +
                 "    }" + NEWLINE +
-                "  }" + NEWLINE +
+                "  }," + NEWLINE +
+                "  \"additionalProperties\" : false" + NEWLINE +
                      "}");
     }
 
@@ -105,7 +108,8 @@ public class ByteConverterTest {
                 "        \"format\" : \"binary\"" + NEWLINE +
                 "      }" + NEWLINE +
                 "    }" + NEWLINE +
-                "  }" + NEWLINE +
+                "  }," + NEWLINE +
+                "  \"additionalProperties\" : false" + NEWLINE +
                 "}");
     }
 

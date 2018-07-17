@@ -217,7 +217,8 @@ public class ParameterSerializationTest {
                 "         \"name\":{" +
                 "            \"type\":\"string\"" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "     \"additionalProperties\":false" +
                 "   }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(p, json);
@@ -235,7 +236,8 @@ public class ParameterSerializationTest {
                 "schema:\n" +
                 "  properties:\n" +
                 "    name:\n" +
-                "      type: \"string\"";
+                "      type: \"string\"\n" +
+                "  additionalProperties: false";
         SerializationMatchers.assertEqualsToYaml(p, yaml);
     }
 
@@ -245,11 +247,13 @@ public class ParameterSerializationTest {
                 "   \"in\":\"body\"," +
                 "   \"required\":false," +
                 "   \"schema\":{" +
+                "      \"type\":\"object\","+
                 "      \"properties\":{" +
                 "         \"name\":{" +
                 "            \"type\":\"string\"" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }" +
                 "}";
         final Parameter p = m.readValue(json, Parameter.class);
@@ -292,6 +296,7 @@ public class ParameterSerializationTest {
                 "   \"in\":\"body\"," +
                 "   \"required\":false," +
                 "   \"schema\":{" +
+                "   \"additionalProperties\":false,"+
                 "      \"type\":\"array\"," +
                 "      \"items\":{" +
                 "         \"$ref\":\"#/definitions/Cat\"" +
@@ -307,6 +312,7 @@ public class ParameterSerializationTest {
                 "   \"in\":\"body\"," +
                 "   \"required\":false," +
                 "   \"schema\":{" +
+                "      \"additionalProperties\":false," +
                 "      \"type\":\"array\"," +
                 "      \"items\":{" +
                 "         \"$ref\":\"#/definitions/Cat\"" +

@@ -22,6 +22,7 @@ public abstract class AbstractModel implements Model {
     private Integer minLength;
     private Integer maxLength;
     private String pattern;
+    public Object additionalProperties;
 
     @Override
     public ExternalDocs getExternalDocs() {
@@ -269,4 +270,16 @@ public abstract class AbstractModel implements Model {
         this.xml = xml;
     }
 
+    public Model additionalProperties(Object additionalProperties) {
+        this.setAdditionalProperties(additionalProperties);
+        return this;
+    }
+
+    public Object getAdditionalProperties() {
+        return (null == additionalProperties ? false: additionalProperties);
+    }
+
+    public void setAdditionalProperties(Object additionalProperties) {
+        this.additionalProperties = additionalProperties;
+    }
 }

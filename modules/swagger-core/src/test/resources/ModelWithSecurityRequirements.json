@@ -99,7 +99,8 @@
                 "message":{
                     "type":"string"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "Person":{
             "type":"object",
@@ -132,7 +133,8 @@
                     "type":"number",
                     "format":"double"
                 }
-            }
+            },
+            "additionalProperties": false
         }
     }
 }

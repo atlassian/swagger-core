@@ -30,6 +30,7 @@
                 "type": "number",
                 "format": "double"
             }
-        }
+        },
+        "additionalProperties":false}
     }
 }

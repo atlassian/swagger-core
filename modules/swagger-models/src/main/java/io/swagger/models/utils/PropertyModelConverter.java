@@ -22,7 +22,7 @@ public class PropertyModelConverter {
 
         if(model instanceof ModelImpl) {
             ModelImpl m = (ModelImpl) model;
-            if (m.getAdditionalProperties() != null){
+            if (m.additionalProperties != null){
                 MapProperty mapProperty = new MapProperty();
                 mapProperty.setType(m.getType());
                 mapProperty.setAllowEmptyValue(m.getAllowEmptyValue());
@@ -188,7 +188,7 @@ public class PropertyModelConverter {
 
         Map<String, Object> extensions = property.getVendorExtensions();
 
-        Property additionalProperties = null;
+        Object additionalProperties = null;
 
         if (property instanceof MapProperty) {
              additionalProperties = ((MapProperty) property).getAdditionalProperties();

@@ -34,7 +34,8 @@ public class EnumPropertyTest {
                 "               \"INVITE_ONLY\"" +
                 "            ]" +
                 "         }" +
-                "      }" +
+                "      }," +
+                "      \"additionalProperties\":false" +
                 "   }" +
                 "}";
         SerializationMatchers.assertEqualsToJson(models, json);

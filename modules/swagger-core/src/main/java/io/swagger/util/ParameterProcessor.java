@@ -10,13 +10,7 @@ import io.swagger.models.Swagger;
 import io.swagger.models.parameters.AbstractSerializableParameter;
 import io.swagger.models.parameters.BodyParameter;
 import io.swagger.models.parameters.Parameter;
-import io.swagger.models.properties.AbstractNumericProperty;
-import io.swagger.models.properties.ArrayProperty;
-import io.swagger.models.properties.FileProperty;
-import io.swagger.models.properties.LongProperty;
-import io.swagger.models.properties.Property;
-import io.swagger.models.properties.PropertyBuilder;
-import io.swagger.models.properties.StringProperty;
+import io.swagger.models.properties.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -266,9 +260,22 @@ public class ParameterProcessor {
                 if (StringUtils.isNotEmpty(defaultValue)) {
                     args.put(PropertyBuilder.PropertyId.DEFAULT, defaultValue);
                 }
-                bp.setSchema(PropertyBuilder.toModel(PropertyBuilder.merge(property, args)));
-                for (Map.Entry<String, Model> entry : ModelConverters.getInstance().readAll(type).entrySet()) {
-                    swagger.addDefinition(entry.getKey(), entry.getValue());
+                if (property instanceof RefProperty){
+                    for (Map.Entry<String, Model> entry : ModelConverters.getInstance().readAll(type).entrySet()) {
+                        if (entry.getKey().equals(((RefProperty) property).getSimpleRef())) {
+                            entry.getValue().setAdditionalProperties(true);
+                            bp.schema(entry.getValue());
+                        } else {
+                            entry.getValue().setAdditionalProperties(true);
+                            swagger.addDefinition(entry.getKey(), entry.getValue());
+                        }
+                    }
+                } else {
+                    bp.setSchema(PropertyBuilder.toModel(PropertyBuilder.merge(property, args)));
+                    for (Map.Entry<String, Model> entry : ModelConverters.getInstance().readAll(type).entrySet()) {
+                        entry.getValue().setAdditionalProperties(true);
+                        swagger.addDefinition(entry.getKey(), entry.getValue());
+                    }
                 }
             }
             parameter = bp;

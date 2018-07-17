@@ -1,7 +1,6 @@
 # Swagger Core library
 
-[![Build Status](https://travis-ci.org/swagger-api/swagger-core.svg?branch=1.5)](https://travis-ci.org/swagger-api/swagger-core)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.swagger/swagger-project/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/io.swagger/swagger-project)
+## This is a forked version of [Swagger Core](https://github.com/swagger-api/swagger-core).
 
 Javadocs for annotations with the current release are [available online](http://docs.swagger.io/swagger-core/current/apidocs/index.html).
 
@@ -71,7 +70,7 @@ You need the following installed and available in your $PATH:
 * Apache maven 3.0.4 or greater (http://maven.apache.org/)
 
 
-### To build from source (currently 1.5.21-SNAPSHOT)
+### To build from source (currently 1.5.21-atlassian-1-SNAPSHOT)
 ```
 # first time building locally
 mvn -N

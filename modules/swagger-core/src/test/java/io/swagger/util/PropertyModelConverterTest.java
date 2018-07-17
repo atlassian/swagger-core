@@ -42,11 +42,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof UUIDProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"uuid");
+        Assert.assertEquals(((UUIDProperty) property).getType(),"string");
+        Assert.assertEquals(((UUIDProperty) property).getFormat(),"uuid");
     }
 
     @Test
@@ -65,11 +65,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof EmailProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"email");
+        Assert.assertEquals(((EmailProperty) property).getType(),"string");
+        Assert.assertEquals(((EmailProperty) property).getFormat(),"email");
     }
 
     @Test
@@ -87,10 +87,10 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof BooleanProperty);
-        Assert.assertEquals(property.getType(),"boolean");
+        Assert.assertEquals(((BooleanProperty) property).getType(),"boolean");
     }
 
     @Test
@@ -109,11 +109,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof DateProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"date");
+        Assert.assertEquals(((DateProperty) property).getType(),"string");
+        Assert.assertEquals(((DateProperty) property).getFormat(),"date");
     }
 
     @Test
@@ -132,11 +132,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof DateTimeProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"date-time");
+        Assert.assertEquals(((DateTimeProperty) property).getType(),"string");
+        Assert.assertEquals(((DateTimeProperty) property).getFormat(),"date-time");
     }
 
     @Test
@@ -155,11 +155,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof StringProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"password");
+        Assert.assertEquals(((StringProperty) property).getType(),"string");
+        Assert.assertEquals(((StringProperty) property).getFormat(),"password");
     }
 
     @Test
@@ -180,11 +180,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof StringProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(((StringProperty)property).getEnum().size(),2);
+        Assert.assertEquals(((StringProperty) property).getType(),"string");
+        Assert.assertEquals(((StringProperty) property).getEnum().size(),2);
     }
 
     @Test
@@ -204,12 +204,12 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof StringProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"password");
-        Assert.assertEquals(((StringProperty)property).getPattern(),"Pattern");
+        Assert.assertEquals(((StringProperty) property).getType(),"string");
+        Assert.assertEquals(((StringProperty) property).getFormat(),"password");
+        Assert.assertEquals(((StringProperty) property).getPattern(),"Pattern");
     }
 
     @Test
@@ -228,11 +228,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof BinaryProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"binary");
+        Assert.assertEquals(((BinaryProperty) property).getType(),"string");
+        Assert.assertEquals(((BinaryProperty) property).getFormat(),"binary");
     }
 
     @Test
@@ -251,11 +251,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof DoubleProperty);
-        Assert.assertEquals(property.getType(),"number");
-        Assert.assertEquals(property.getFormat(),"double");
+        Assert.assertEquals(((DoubleProperty) property).getType(),"number");
+        Assert.assertEquals(((DoubleProperty) property).getFormat(),"double");
     }
 
     @Test
@@ -276,13 +276,13 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof DoubleProperty);
-        Assert.assertEquals(property.getType(),"number");
-        Assert.assertEquals(property.getFormat(),"double");
-        Assert.assertEquals(((DoubleProperty)property).getMinimum(), new BigDecimal(1));
-        Assert.assertEquals(((DoubleProperty)property).getMaximum(), new BigDecimal(100));
+        Assert.assertEquals(((DoubleProperty) property).getType(),"number");
+        Assert.assertEquals(((DoubleProperty) property).getFormat(),"double");
+        Assert.assertEquals(((DoubleProperty) property).getMinimum(), new BigDecimal(1));
+        Assert.assertEquals(((DoubleProperty) property).getMaximum(), new BigDecimal(100));
     }
 
     @Test
@@ -301,11 +301,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof ByteArrayProperty);
-        Assert.assertEquals(property.getType(),"string");
-        Assert.assertEquals(property.getFormat(),"byte");
+        Assert.assertEquals(((ByteArrayProperty) property).getType(),"string");
+        Assert.assertEquals(((ByteArrayProperty) property).getFormat(),"byte");
     }
 
     @Test
@@ -324,11 +324,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof LongProperty);
-        Assert.assertEquals(property.getType(),"integer");
-        Assert.assertEquals(property.getFormat(),"int64");
+        Assert.assertEquals(((LongProperty) property).getType(),"integer");
+        Assert.assertEquals(((LongProperty) property).getFormat(),"int64");
     }
 
     @Test
@@ -347,11 +347,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof IntegerProperty);
-        Assert.assertEquals(property.getType(),"integer");
-        Assert.assertEquals(property.getFormat(),"int32");
+        Assert.assertEquals(((IntegerProperty) property).getType(),"integer");
+        Assert.assertEquals(((IntegerProperty) property).getFormat(),"int32");
     }
 
     @Test
@@ -373,11 +373,11 @@ public class PropertyModelConverterTest {
         Operation operation = Yaml.mapper().readValue(yaml, Operation.class);
         Response response = operation.getResponses().get("200");
         Assert.assertNotNull(response);
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         Assert.assertTrue(property instanceof ArrayProperty);
         ArrayProperty arrayProperty = (ArrayProperty) property;
-        Assert.assertEquals(property.getType(),"array");
+        Assert.assertEquals(arrayProperty.getType(),"array");
         Assert.assertEquals(arrayProperty.getItems().getType(),"string");
         Assert.assertEquals(arrayProperty.getItems().getFormat(),"date-time");
         Assert.assertEquals(arrayProperty.getItems().getExample(),"1985-04-12T23:20:50.52Z");
@@ -582,7 +582,8 @@ public class PropertyModelConverterTest {
         Assert.assertTrue(convertedModel instanceof ModelImpl);
         ModelImpl model = (ModelImpl) convertedModel;
         Assert.assertEquals(model.getType(),"object");
-        Assert.assertEquals(model.getAdditionalProperties().getType(),"integer");
+        Assert.assertTrue(model.getAdditionalProperties() instanceof Property);
+        Assert.assertEquals(((Property) model.getAdditionalProperties()).getType(),"integer");
     }
 
     @Test
@@ -597,10 +598,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/string");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Assert.assertTrue(property instanceof Property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ModelImpl);
         ModelImpl model = (ModelImpl) convertedModel;
@@ -620,12 +622,13 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/stringenum");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
-        Assert.assertEquals(((StringProperty)property).getEnum().size(),2);
+        Assert.assertEquals(((StringProperty) property).getEnum().size(),2);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ModelImpl);
         ModelImpl model = (ModelImpl) convertedModel;
@@ -646,10 +649,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/stringRef");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof RefModel);
         RefModel model = (RefModel) convertedModel;
@@ -668,10 +672,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/boolean");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ModelImpl);
         ModelImpl model = (ModelImpl) convertedModel;
@@ -691,10 +696,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/number");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ModelImpl);
         ModelImpl model = (ModelImpl) convertedModel;
@@ -714,10 +720,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/arrayOfInt");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ArrayModel);
         ArrayModel model = (ArrayModel) convertedModel;
@@ -737,10 +744,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/arrayOfRef");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ArrayModel);
         ArrayModel model = (ArrayModel) convertedModel;
@@ -762,10 +770,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/arrayRef");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof RefModel);
         RefModel model = (RefModel) convertedModel;
@@ -784,10 +793,11 @@ public class PropertyModelConverterTest {
         Path string  = swagger.getPaths().get("/object");
         Operation operation = string.getOperations().get(0);
         Response response = operation.getResponses().get("200");
-        Property property = response.getSchema();
+        Object property = response.getSchema();
+        Assert.assertTrue(property instanceof Property);
 
         PropertyModelConverter converter = new PropertyModelConverter();
-        Model convertedModel = converter.propertyToModel(property);
+        Model convertedModel = converter.propertyToModel((Property) property);
 
         Assert.assertTrue(convertedModel instanceof ModelImpl);
         ModelImpl model = (ModelImpl) convertedModel;

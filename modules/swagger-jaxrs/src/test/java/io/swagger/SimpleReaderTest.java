@@ -339,7 +339,7 @@ public class SimpleReaderTest {
         ModelImpl empty = (ModelImpl) definitions.get("EmptyModel");
         assertEquals(empty.getType(), "object");
         assertNull(empty.getProperties());
-        assertNull(empty.getAdditionalProperties(), null);
+        assertEquals(empty.getAdditionalProperties(), false);
     }
 
     @Test(description = "scan a simple resource without annotations")
@@ -478,7 +478,7 @@ public class SimpleReaderTest {
         assertEquals(schema.getType(), "integer");
         assertEquals(schema.getFormat(), "int32");
 
-        assertEquals(swagger.getDefinitions().keySet(), Arrays.asList("Tag"));
+        assertNull(swagger.getDefinitions());
 
         testString(swagger, "/testApiString", "input", "String parameter");
         testString(swagger, "/testString", "body", null);
@@ -512,7 +512,8 @@ public class SimpleReaderTest {
     }
 
     private void testObject(Swagger swagger, String path, String name, String description) {
-        assertEquals(((RefModel) testParam(swagger, path, name, description)).getSimpleRef(), "Tag");
+        assertEquals(((ModelImpl) testParam(swagger, path, name, description)).getType(), "object");
+        assertEquals(((ModelImpl) testParam(swagger, path, name, description)).getName(), "Tag");
     }
 
     @Test(description = "verify top-level path params per #1085")
@@ -565,7 +566,7 @@ public class SimpleReaderTest {
 
                 if ("testObjectResponse".equals(name)) {
                     assertEquals(((RefModel) response).getSimpleRef(), "Tag");
-                    assertEquals(((RefModel) model).getSimpleRef(), "Tag");
+                    assertEquals(((ModelImpl) model).getName(), "Tag");
                 } else if ("testObjectsResponse".equals(name)) {
                     assertEquals(((RefProperty) ((ArrayModel) response).getItems()).getSimpleRef(), "Tag");
                     assertEquals(((RefProperty) ((ArrayModel) model).getItems()).getSimpleRef(), "Tag");

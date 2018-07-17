@@ -112,6 +112,16 @@ public class RefModel implements Model {
     }
 
     @Override
+    public Object getAdditionalProperties() {
+        return null;
+    }
+
+    @Override
+    public void setAdditionalProperties(Object additionalProperties) {
+
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
